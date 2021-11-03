@@ -5,19 +5,13 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       #Написать свою функцию my_each
-      # def my_each
-      #   for element in self
-      #     yield(element)
-      #   end
-      # end
-
       def my_each(&block)
         return self if empty?
 
         head, *tail = self
-        tail = MyArray.new(tail)
+        new_tail = MyArray.new(tail)
         block.call(head)
-        tail.my_each(&block)
+        new_tail.my_each(&block)
         self
       end
 
